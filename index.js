@@ -3,8 +3,8 @@ var Word = require("./Word");
 
 //Need to bring in the nmp packages for prompt and inquire
 
-var prompt = require("prompt");
-var inquirer = require("inquire");
+// var prompt = require("prompt");
+var inquirer = require("inquirer");
 
 // * **index.js**: The file containing the logic for the course of the game, which depends on `Word.js` and:
 
@@ -68,7 +68,6 @@ function selectRandomWord() {
     console.log("Your word contains " + randomWord.length + " letters.");
     console.log("WORD TO GUESS:");
 
-    otherword.splitWord();
     otherword.generateLetter();
     guessLetter();
 }
@@ -95,7 +94,7 @@ function guessLetter() {
 
                 else if (lettersGuessedArray.indexOf(guess.letter.toUpperCase()) === -1) {
 
-                    lettersGuessed = lettersGuessed.join(" " + guess.letter.toUpperCase());
+                    lettersGuessed = lettersGuessed.join("" + guess.letter.toUpperCase());
                     lettersGuessedArray.push(guess.letter.toUpperCase);
                     console.log("Letters already guessed: ", + lettersGuessed);
                 }
@@ -105,7 +104,7 @@ function guessLetter() {
                     for (i = 0; i < otherword.letters.length; i++) {
                     //If the user guess equals one of the letters/characters in the word and letterGuessCorrect is equal to false for that letter
                         if ((guess.letter.toUpperCase() === otherword.letters[i].guess) && (otherword.letters[i].letterGuessCorrect === false)) {
-                             otherword.letters[i].letterGuessCorrect === true;
+                             otherword.letters[i].letterGuessCorrect = true;
                              letterGuessCorrect = true;
                              otherword.underscores[i] = guess.letter.toUpperCase();
                              underscores++; 
